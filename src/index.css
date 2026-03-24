@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Anton", sans-serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap');
+
+:root {
+  --neon-green: #00FF00;
+  --brutal-black: #000000;
+  --gallery-white: #FFFFFF;
+}
+
+body {
+  background-color: var(--gallery-white);
+  color: var(--brutal-black);
+  font-family: var(--font-sans);
+}
+
+.brutal-border {
+  border: 3px solid var(--brutal-black);
+  box-shadow: 4px 4px 0px var(--brutal-black);
+  transition: all 0.1s ease;
+}
+
+.brutal-border:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--brutal-black);
+}
+
+.brutal-border:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px var(--brutal-black);
+}
+
+.neon-bg {
+  background-color: var(--neon-green);
+}
+
+.big-number {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 0.8;
+}
+

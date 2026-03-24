@@ -1,0 +1,47 @@
+[
+  {
+    "id": "krunker",
+    "title": "Krunker.io",
+    "description": "A fast-paced pixelated first-person shooter. Join a room and start blasting.",
+    "category": "Action",
+    "thumbnail": "https://th.bing.com/th/id/OIP.h_73aWA5Rl-BKFZwzXt89wHaHa?w=169&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "url": "https://krunker.io/",
+    "color": "#FF00FF"
+  },
+  {
+    "id": "dino",
+    "title": "Chrome Dino",
+    "description": "The famous offline dinosaur game. Jump over cacti and avoid birds.",
+    "category": "Retro",
+    "thumbnail": "https://th.bing.com/th/id/OIP.clujfzzz2r98vZqX6fKS7gHaFE?w=245&h=180&c=7&r=0&o=7&pid=1.7&rm=3",
+    "url": "https://chromedino.com/",
+    "color": "#00FFFF"
+  },
+  {
+    "id": "eaglercraft",
+    "title": "Eaglercraft",
+    "description": "Minecraft 1.8.8 in your browser. Build, explore, and survive in this unblocked version of the classic sandbox game.",
+    "category": "Action",
+    "thumbnail": "https://eaglercraft.com/assets/img/eaglercraft_logo.png",
+    "url": "https://eaglercraft.com/play/?version=1.8.8-wasm",
+    "color": "#FFFF00"
+  },
+  {
+    "id": "gunspin",
+    "title": "Gunspin",
+    "description": "Shoot your gun to propel it as far as possible in this addictive physics-based game.",
+    "category": "Action",
+    "thumbnail": "https://classroomjq.github.io/gunspin/images/icon.png",
+    "url": "https://classroomjq.github.io/gunspin/",
+    "color": "#FF4500"
+  },
+  {
+    "id": "polytrack",
+    "title": "Polytrack",
+    "description": "A high-speed low-poly racing game with a built-in track editor. Race against the clock or build your own tracks.",
+    "category": "Sports",
+    "thumbnail": "",
+    "url": "https://www.kodub.com/apps/polytrack",
+    "color": "#7FFF00"
+  }
+]
