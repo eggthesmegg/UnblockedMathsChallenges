@@ -4,7 +4,7 @@
  */
 
 import { useState, useMemo } from 'react';
-import { Search, Gamepad2, X, Maximize2, Filter, TrendingUp } from 'lucide-react';
+import { Gamepad2, X, Maximize2, Filter, TrendingUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import gamesData from './games.json';
 import { Game, Category } from './types';
@@ -12,18 +12,15 @@ import { Game, Category } from './types';
 const CATEGORIES: Category[] = ['All', 'Action', 'Puzzle', 'Sports', 'Retro', 'Strategy'];
 
 export default function App() {
-  const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<Category>('All');
   const [activeGame, setActiveGame] = useState<Game | null>(null);
 
   const filteredGames = useMemo(() => {
     return gamesData.filter((game: Game) => {
-      const matchesSearch = game.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            game.description.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesCategory = selectedCategory === 'All' || game.category === selectedCategory;
-      return matchesSearch && matchesCategory;
+      return matchesCategory;
     });
-  }, [searchQuery, selectedCategory]);
+  }, [selectedCategory]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -33,18 +30,7 @@ export default function App() {
           <div className="bg-black p-3 brutal-border group-hover:bg-white transition-colors">
             <Gamepad2 className="text-[#00FF00] w-8 h-8 group-hover:text-black" />
           </div>
-          <h1 className="font-display text-4xl uppercase tracking-tighter group-hover:text-white transition-colors">UG_HUB</h1>
-        </div>
-
-        <div className="flex-1 max-w-xl w-full relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black" />
-          <input
-            type="text"
-            placeholder="SEARCH GAMES..."
-            className="w-full pl-12 pr-4 py-3 brutal-border font-bold placeholder:text-black/50 outline-none focus:bg-white"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+          <h1 className="font-display text-4xl uppercase tracking-tighter group-hover:text-white transition-colors">Egg's unblocked Games</h1>
         </div>
 
         <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto">
@@ -92,12 +78,18 @@ export default function App() {
               </div>
 
               <div className="relative aspect-video brutal-border bg-black overflow-hidden shadow-[20px_20px_0px_0px_rgba(0,0,0,1)]">
-                <iframe
-                  src={activeGame.url}
-                  className="w-full h-full border-none"
-                  title={activeGame.title}
-                  allowFullScreen
-                />
+                {activeGame.url ? (
+                  <iframe
+                    src={activeGame.url}
+                    className="w-full h-full border-none"
+                    title={activeGame.title}
+                    allowFullScreen
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-white font-display text-4xl">
+                    INVALID GAME URL
+                  </div>
+                )}
               </div>
 
               <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -133,13 +125,19 @@ export default function App() {
                     className="group cursor-pointer"
                   >
                     <div className="brutal-border bg-white overflow-hidden h-full flex flex-col transition-all duration-300 group-hover:shadow-[12px_12px_0_0_rgba(0,0,0,1)]">
-                      <div className="relative aspect-[4/3] overflow-hidden border-b-4 border-black">
-                        <img
-                          src={game.thumbnail}
-                          alt={game.title}
-                          className="w-full h-full object-cover transition-all duration-300 group-hover:scale-110"
-                          referrerPolicy="no-referrer"
-                        />
+                      <div className="relative aspect-[4/3] overflow-hidden border-b-4 border-black bg-black/5">
+                        {game.thumbnail ? (
+                          <img
+                            src={game.thumbnail}
+                            alt={game.title}
+                            className="w-full h-full object-cover transition-all duration-300 group-hover:scale-110"
+                            referrerPolicy="no-referrer"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <Gamepad2 className="w-16 h-16 text-black/10" />
+                          </div>
+                        )}
                         <div className="absolute top-4 left-4 bg-black text-white px-3 py-1 font-bold text-xs uppercase brutal-border" style={{ color: game.color || '#00FF00' }}>
                           {game.category}
                         </div>
@@ -175,7 +173,7 @@ export default function App() {
       <footer className="border-t-4 border-black p-12 bg-black text-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-2">
-            <h2 className="font-display text-6xl uppercase mb-6 tracking-tighter">UG_HUB</h2>
+            <h2 className="font-display text-6xl uppercase mb-6 tracking-tighter">Egg's unblocked Games</h2>
             <p className="text-xl font-medium text-white/60 max-w-md">
               The ultimate destination for unblocked web entertainment. 
               Built for speed, designed for gamers.
@@ -205,7 +203,7 @@ export default function App() {
           </div>
         </div>
         <div className="mt-20 pt-8 border-t border-white/10 text-center font-bold uppercase text-xs tracking-widest text-white/40">
-          © 2026 UNBLOCKED GAMES HUB • ALL RIGHTS RESERVED
+          © 2026 Egg's unblocked Games • ALL RIGHTS RESERVED
         </div>
       </footer>
     </div>
